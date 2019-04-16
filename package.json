@@ -1,0 +1,16 @@
+{
+  "name": "nextjs-initialstate-playground",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "node server.js",
+    "build": "next build",
+    "start": "NODE_ENV=production node server.js"
+  },
+  "dependencies": {
+    "cross-fetch": "^3.0.2",
+    "next": "latest",
+    "path-match": "1.2.4",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  }
+}
