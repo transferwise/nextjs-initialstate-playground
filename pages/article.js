@@ -1,6 +1,8 @@
 import React from 'react';
-import Link from 'next/link'
-import { getSidebarTopics, retrieveArticle } from "../clients/clients";
+import Link from 'next/link';
+import { getSidebarTopics, retrieveArticle } from '../clients/clients';
+import { PageTemplate } from '../components/template';
+import { SideBar } from '../components/all-topics-sidebar';
 
 export default class extends React.Component {
   static async getInitialProps({ query: { articleId } }) {
@@ -12,18 +14,14 @@ export default class extends React.Component {
     const { articleResult, allTopics } = this.props;
 
     return (
-      <div>
-        <h1>{articleResult.title}</h1>
-        <div dangerouslySetInnerHTML={{__html: articleResult.content}} />
+      <PageTemplate>
+        <div className="col-lg-8 col-xs-12">
+          <h1>{articleResult.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: articleResult.content }}/>
+        </div>
 
-        <ul>
-          {allTopics.map(a => (
-            <li key={a.id}>
-              <Link key={a.id} href={`/topic/${a.slug}`} prefetch><a>{a.title}</a></Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-    )
+        <SideBar allTopics={allTopics}/>
+      </PageTemplate>
+    );
   }
 }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from 'next/link'
 import { getSidebarTopics, getTopicsById } from "../clients/clients";
+import { PageTemplate } from "../components/template";
+import { SideBar } from "../components/all-topics-sidebar";
 
 export default class extends React.Component {
   static async getInitialProps({ query: { topicId: topicId } }) {
@@ -10,30 +12,24 @@ export default class extends React.Component {
   }
 
   render() {
-    const { topicId, topicResult, allTopics } = this.props;
-
-    console.log(topicResult);
+    const { topicResult, allTopics } = this.props;
 
     return (
-      <div>
-        <h1>Topic ID: {topicId}</h1>
-        <ul>
-          {topicResult.articles.map(a => (
-              <li key={a.id}>
-                <Link key={a.id} href={`/topic/${a.parentSlug}/article/${a.id}/${a.slug}`} prefetch><a>{a.title}</a></Link>
-              </li>
-            )
-          )}
-        </ul>
+      <PageTemplate>
+        <div className="col-lg-8 col-xs-12">
+          <ul>
+            {topicResult.articles.map(a => (
+                <li key={a.id}>
+                  <Link key={a.id} href={`/topic/${a.parentSlug}/article/${a.id}/${a.slug}`}
+                        prefetch><a>{a.title}</a></Link>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
 
-        <ul>
-          {allTopics.map(a => (
-            <li key={a.id}>
-              <Link key={a.id} href={`/topic/${a.slug}`} prefetch><a>{a.title}</a></Link>
-            </li>
-          ))}
-        </ul>
-      </div>
+        <SideBar allTopics={allTopics} />
+      </PageTemplate>
     )
   }
 }
