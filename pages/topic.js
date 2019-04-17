@@ -4,8 +4,7 @@ import { getSidebarTopics, getTopicsById } from "../clients/clients";
 
 export default class extends React.Component {
   static async getInitialProps({ query: { topicId: topicId } }) {
-    const topicResult = await getTopicsById(topicId);
-    const allTopics = await getSidebarTopics();
+    const [topicResult, allTopics] = await Promise.all([getTopicsById(topicId), getSidebarTopics()]);
 
     return { id: topicId, topicResult, allTopics };
   }
