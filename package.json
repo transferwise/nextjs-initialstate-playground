@@ -14,6 +14,7 @@
     "next": "8.1.0",
     "path-match": "1.2.4",
     "react": "^16.7.0",
-    "react-dom": "^16.7.0"
+    "react-dom": "^16.7.0",
+    "retranslate": "^1.0.3"
   }
 }

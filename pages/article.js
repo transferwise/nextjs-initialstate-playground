@@ -1,5 +1,4 @@
 import React from 'react';
-import Link from 'next/link';
 import { getSidebarTopics, retrieveArticle } from '../clients/clients';
 import { PageTemplate } from '../components/template';
 import { SideBar } from '../components/all-topics-sidebar';
