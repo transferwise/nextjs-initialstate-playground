@@ -29,6 +29,9 @@ export async function retrieveArticle(articleId) {
   const result = await response.json();
 
   return {
+    id: result.id,
+    slug: result.slug,
+    parentSlug: result.parentSlug,
     title: result.title,
     content: result.content,
   };
