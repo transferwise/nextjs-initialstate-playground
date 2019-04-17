@@ -1,7 +1,8 @@
 import React from 'react';
 import { PublicNavigation, Footer } from '@transferwise/public-navigation';
+import { SideBar } from './all-topics-sidebar';
 
-export function PageTemplate({ children }) {
+export function PageTemplate({ allTopics, children }) {
   return (
     <div>
       <PublicNavigation className="bg-brand-dark" inverse={false}/>
@@ -24,14 +25,10 @@ export function PageTemplate({ children }) {
         <div className="inner-container center-block p-t-section-1 p-b-section-2 col-md-10 col-md-offset-1">
           <div className="row hidden-xs p-t-1">
             <div className={'col-lg-8 col-xs-12 home-page-title-section'}>
-              <h1 className="hidden-xs">
-                To be titled
-              </h1>
+              {children}
             </div>
-          </div>
 
-          <div className="row">
-            {children}
+            <SideBar allTopics={allTopics}/>
           </div>
         </div>
       </div>
