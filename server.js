@@ -9,20 +9,32 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
 
-const match = route('/topic/:id/:lol?');
+const topicMatch = route('/topic/:topicId/:lol?');
+const articleMatch = route('/topic/:topicId/:lol/article/:articleId?/:lol2?');
 
 app.prepare().then(() => {
     createServer((req, res) => {
         const { pathname, query } = parse(req.url, true);
-        const params = match(pathname);
-        if (params === false) {
-            handle(req, res);
-            return
+
+        const articleParams = articleMatch(pathname);
+
+        if (articleParams) console.log('article', articleParams, pathname);
+
+        if (articleParams !== false) {
+            app.render(req, res, '/article', Object.assign(articleParams, query));
+            return;
         }
-        // assigning `query` into the params means that we still
-        // get the query string passed to our application
-        // i.e. /blog/foo?show-comments=true
-        app.render(req, res, '/topic', Object.assign(params, query))
+
+        const topicParams = topicMatch(pathname);
+
+        if (topicParams) console.log('topic', topicParams);
+
+        if (topicParams !== false) {
+            app.render(req, res, '/topic', Object.assign(topicParams, query));
+            return;
+        }
+
+        handle(req, res);
     }).listen(port, err => {
         if (err) throw err;
         console.log(`> Ready on http://localhost:${port}`)
