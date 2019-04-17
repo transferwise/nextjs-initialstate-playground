@@ -8,7 +8,8 @@ const dev = process.env.NODE_ENV !== 'production';
 const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
-const match = route('/topic/:id');
+
+const match = route('/topic/:id/:lol?');
 
 app.prepare().then(() => {
     createServer((req, res) => {

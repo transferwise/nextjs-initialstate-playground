@@ -47,7 +47,11 @@ export default class extends React.Component {
         </ul>
 
         <ul>
-          {allTopics.map(a => <li key={a.id}>{a.title}</li>)}
+          {allTopics.map(a => (
+            <li key={a.id}>
+              <Link key={a.id} href={`/topic/${a.slug}`} prefetch><a>{a.title}</a></Link>
+            </li>
+          ))}
         </ul>
 
         <Link href="/topic/12"><a>LOL</a></Link>
