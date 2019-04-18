@@ -1,6 +1,8 @@
 import React from 'react';
 import { PublicNavigation, Footer } from '@transferwise/public-navigation';
 import { SideBar } from './all-topics-sidebar';
+import { Footer as HelpCenterFooter } from '../components/footer/footer';
+import { Locale } from '../common/locale';
 
 export function PageTemplate({ allTopics, children }) {
   return (
@@ -31,6 +33,10 @@ export function PageTemplate({ allTopics, children }) {
             <SideBar allTopics={allTopics}/>
           </div>
         </div>
+      </div>
+
+      <div className="row">
+        <HelpCenterFooter locale={Locale.HU} />
       </div>
 
       <div className="row">
