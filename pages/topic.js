@@ -2,16 +2,17 @@ import React from 'react';
 import Link from 'next/link';
 import { getSidebarTopics, getTopicsById } from '../clients/clients';
 import { PageTemplate } from '../components/template';
-import { redirect } from '../common/redirect';
+import { permanentRedirect } from '../common/permanentRedirect';
 
 export default class TopicPage extends React.Component {
   static async getInitialProps({ res, req: { url }, query: { topicId: topicId } }) {
     const [topicResult, allTopics] = await Promise.all([getTopicsById(topicId), getSidebarTopics()]);
 
-    const sanitizedPath = url.replace('/topic/', '');
+    const sanitizedPath = url.replace('/help/', '');
 
     if (sanitizedPath !== topicResult.slug) {
-      redirect(res, `/topic/${topicResult.slug}`)
+      console.log(sanitizedPath, topicResult.slug)
+      // permanentRedirect(res, `/topic/${topicResult.slug}`)
     }
 
     return { id: topicId, topicResult, allTopics };
@@ -27,7 +28,7 @@ export default class TopicPage extends React.Component {
         <ul>
           {articles.map(a => (
               <li key={a.id}>
-                <Link key={a.id} href={`/topic/${a.parentSlug}/article/${a.id}/${a.slug}`}
+                <Link key={a.id} href={`/help/${a.parentSlug}/${a.id}/${a.slug}`}
                       prefetch><a>{a.title}</a></Link>
               </li>
             )

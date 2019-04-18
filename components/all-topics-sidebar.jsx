@@ -8,7 +8,7 @@ export function SideBar(props) {
     <ul>
       {allTopics.map(a => (
         <li key={a.id}>
-          <Link key={a.id} href={`/topic/${a.slug}`} prefetch><a>{a.title}</a></Link>
+          <Link key={a.id} href={`/help/${a.slug}`} prefetch><a>{a.title}</a></Link>
         </li>
       ))}
     </ul>

@@ -1,0 +1,16 @@
+$button-color: #2ED06E;;
+
+.article-was-it-helpful {
+  .btn-info:hover {
+    background-color: $button-color;
+    border-color: $button-color;
+  }
+}
+
+// We need to match the size of <h4> of "Was it helpful?"
+.article-feedback-thanks {
+  @media (min-width: 770px) {
+    font-size: 18px;
+    line-height: 24px;
+  }
+}

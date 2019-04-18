@@ -1,6 +1,13 @@
 const withCSS = require('@zeit/next-css');
-module.exports = withCSS({
-  cssLoaderOptions: {
-    url: false
-  }
-});
+const withTypescript = require('@zeit/next-typescript');
+const withSass = require('@zeit/next-sass');
+
+module.exports = withSass(
+  withTypescript(
+    withCSS({
+      cssLoaderOptions: {
+        url: false
+      }
+    })
+  )
+);

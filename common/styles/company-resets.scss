@@ -1,0 +1,12 @@
+/*
+ * Currently (2018. december 20) all CSS files of all FES apps are bundled together
+ * Some of these introduce changes that affect our pages as well.
+ * This file should be removed when the CSS bundling fix is out.
+ */
+
+// problems coming from profile-switcher:
+.help-center {
+  .media .circle .tw-icon {
+    margin-top: 0;
+  }
+}

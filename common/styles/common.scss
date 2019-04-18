@@ -1,0 +1,26 @@
+@import "./variables.scss";
+
+.no-underline {
+  text-decoration: none;
+}
+
+.no-underline-and-hover {
+  text-decoration: none;
+
+  &:hover, &:focus {
+    text-decoration: none;
+  }
+}
+
+.p-l-5 {
+  padding-left: $spacing-unit * 5;
+}
+
+// fix for label.media double border
+.help-center-media-list {
+  a:not(:last-child) {
+    label.media {
+      border-bottom: 0;
+    }
+  }
+}

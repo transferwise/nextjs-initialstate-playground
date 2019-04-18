@@ -22,17 +22,3 @@ export async function getTopicsById(id) {
 export async function getSidebarTopics() {
   return getTopicsById('');
 }
-
-export async function retrieveArticle(articleId) {
-  const response = await isomorphicFetch(`articles/${articleId}`);
-
-  const result = await response.json();
-
-  return {
-    id: result.id,
-    slug: result.slug,
-    parentSlug: result.parentSlug,
-    title: result.title,
-    content: result.content,
-  };
-}

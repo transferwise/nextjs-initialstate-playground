@@ -1,0 +1,19 @@
+@import "../../common/styles/variables.scss";
+
+.article-view {
+  color: $light-text;
+
+  .article-was-it-helpful {
+    h4 {
+      color: $light-text;
+    }
+  }
+
+  p {
+    color: inherit;
+  }
+
+  h2, h3 {
+    margin-top: 32px;
+  }
+}

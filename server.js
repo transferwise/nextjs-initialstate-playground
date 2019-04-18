@@ -9,8 +9,8 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 const route = pathMatch();
 
-const topicMatch = route('/topic/:topicId/:lol?');
-const articleMatch = route('/topic/:topicId/:lol/article/:articleId?/:lol2?');
+const topicMatch = route('/help/:topicId/:topicTitle?');
+const articleMatch = route('/help/:topicId/:topicTitle/:articleId/:articleTitle?');
 
 app.prepare().then(() => {
     createServer((req, res) => {
