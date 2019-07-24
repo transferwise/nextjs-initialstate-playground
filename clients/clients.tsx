@@ -9,16 +9,16 @@ const defaultRequestConfiguration = {
 
 const requestConfiguration = Object.assign({}, defaultRequestConfiguration);
 
-export function isomorphicFetch(path) {
+export function isomorphicFetch(path): Promise<Response> {
   const url = `${requestConfiguration.baseUrl}${path}`;
   return fetch(url, { headers: requestConfiguration.headers });
 }
 
-export async function getTopicsById(id) {
-  const topicsResponse = await isomorphicFetch(`topics/${id}`);
+export async function getTopicsById(id?: number) {
+  const topicsResponse = await isomorphicFetch(id ? `topics/${id}` : 'topics');
   return await topicsResponse.json();
 }
 
 export async function getSidebarTopics() {
-  return getTopicsById('');
+  return getTopicsById();
 }

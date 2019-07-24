@@ -39,7 +39,7 @@ export default class extends React.PureComponent<ArticlePageProps> {
     const { articleId, articleResult, relatedArticles, allTopics } = this.props;
 
     return (
-      <TranslationProvider language={'hu'} messages={translations}>
+      <TranslationProvider language={'pt'} messages={translations}>
         <PageTemplate allTopics={allTopics}>
           <ArticleContent articleId={articleId} content={articleResult.content} articleTitle={articleResult.title}/>
           {relatedArticles.length > 0 && (
