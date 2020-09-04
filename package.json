@@ -14,7 +14,7 @@
     "bootstrap": "github:transferwise/bootstrap",
     "cross-fetch": "^3.0.2",
     "next": "8.1.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.1",
     "path-match": "1.2.4",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
